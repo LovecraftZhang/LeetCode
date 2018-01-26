@@ -11,14 +11,27 @@ class AddTwoNumbers {
 
 	public static void main(String[] args) {
 		
-		ListNode l1 = new ListNode(1);
-		l1.next = new ListNode(1);
-
 		ListNode l2 = new ListNode(1);
-		l2.next = new ListNode(1);
+		l2.next = new ListNode(9);
+		l2.next.next = new ListNode(9);
+		l2.next.next.next = new ListNode(9);
+		l2.next.next.next.next = new ListNode(9);
+		l2.next.next.next.next.next = new ListNode(9);
+		l2.next.next.next.next.next.next = new ListNode(9);
+		l2.next.next.next.next.next.next.next = new ListNode(9);
+		l2.next.next.next.next.next.next.next.next = new ListNode(9);
+		l2.next.next.next.next.next.next.next.next.next = new ListNode(9);
+
+		ListNode l1 = new ListNode(9);
 
 		Solution instance = new Solution();
-		instance.addTwoNumbers(l1, l2);
+		ListNode result = instance.addTwoNumbers(l1, l2);
+		ListNode temp = result;
+		
+		while (temp !=null) {
+			System.out.print(temp.val);
+			temp=temp.next;
+		} 
 
 	}
 
@@ -26,23 +39,29 @@ class AddTwoNumbers {
 
 
 		public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-			int sum1 = helper(l1);
-			int sum2 = helper(l2);
-			int sum = sum1 + sum2;
-			int temp = sum;
+			long sum1 = helper(l1);
+			long sum2 = helper(l2);
+			long sum = sum1 + sum2;
+			long temp = sum;
+			
 			ArrayList<Integer> resultArray = new ArrayList<Integer>();
-
+			
+			if(temp != 0){
 			while (temp != 0){
-				resultArray.add(temp%10);
+				resultArray.add((int)temp%10);
+				temp=temp/10;
 			}
 			return makeListNode(resultArray);
+			} else {
+				return new ListNode(0);
+			}
 		}
 
-		public int helper(ListNode l) {
-			int result = 0;
-			int n = 1;
+		public long helper(ListNode l) {
+			long result = 0;
+			int n = 0;
 			while (l != null) {
-				result+=l.val*((int)Math.pow(10, n));
+				result+=l.val*((long)Math.pow(10, n));
 				l=l.next;
 				n++;
 			}
@@ -51,17 +70,21 @@ class AddTwoNumbers {
 
 		public ListNode makeListNode(ArrayList<Integer> array){
 			if (array.size() == 0) {return null;}
-
-			ListNode result = new ListNode(array.get(0));
-			ListNode temp_parent = result;
-
-			for (int n = 1; n<array.size(); n++){
-				ListNode temp = new ListNode(array.get(n));
-				temp_parent.next = temp;
-				temp_parent = temp;
-			}
-
-			return result;
+			
+			System.out.println(array);
+			System.exit(0);
+			return null;
+			
+//			ListNode result = new ListNode(array.get(0));
+//			ListNode temp_parent = result;
+//
+//			for (int n = 1; n<array.size(); n++){
+//				ListNode temp = new ListNode(array.get(n));
+//				temp_parent.next = temp;
+//				temp_parent = temp;
+//			}
+//
+//			return result;
 		}
 	}
 
