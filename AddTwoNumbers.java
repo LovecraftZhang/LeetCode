@@ -28,6 +28,7 @@ class AddTwoNumbers {
 		ListNode result = instance.addTwoNumbers(l1, l2);
 		ListNode temp = result;
 		
+		// check
 		while (temp !=null) {
 			System.out.print(temp.val);
 			temp=temp.next;
@@ -44,11 +45,11 @@ class AddTwoNumbers {
 			long sum = sum1 + sum2;
 			long temp = sum;
 			
-			ArrayList<Integer> resultArray = new ArrayList<Integer>();
+			ArrayList<Long> resultArray = new ArrayList<Long>();
 			
 			if(temp != 0){
 			while (temp != 0){
-				resultArray.add((int)temp%10);
+			resultArray.add(temp%10);
 				temp=temp/10;
 			}
 			return makeListNode(resultArray);
@@ -68,23 +69,20 @@ class AddTwoNumbers {
 			return result;
 		}
 
-		public ListNode makeListNode(ArrayList<Integer> array){
+		public ListNode makeListNode(ArrayList<Long> array){
 			if (array.size() == 0) {return null;}
 			
-			System.out.println(array);
-			System.exit(0);
-			return null;
 			
-//			ListNode result = new ListNode(array.get(0));
-//			ListNode temp_parent = result;
-//
-//			for (int n = 1; n<array.size(); n++){
-//				ListNode temp = new ListNode(array.get(n));
-//				temp_parent.next = temp;
-//				temp_parent = temp;
-//			}
-//
-//			return result;
+			ListNode result = new ListNode(array.get(0).intValue());
+			ListNode temp_parent = result;
+
+			for (int n = 1; n<array.size(); n++){
+				ListNode temp = new ListNode(array.get(n).intValue());
+				temp_parent.next = temp;
+				temp_parent = temp;
+			}
+
+			return result;
 		}
 	}
 
