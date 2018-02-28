@@ -1,3 +1,3 @@
 # LeetCode
 
-Code for soving problems on LeetCode.
+Code for solving problems on LeetCode.
